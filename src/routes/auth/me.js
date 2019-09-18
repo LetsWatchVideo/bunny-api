@@ -11,7 +11,7 @@ module.exports = compose(
 		if(user){
 			send(res, 200, {
 				statusCode: 200,
-				token: req.user.token,
+				accessToken: req.user.accessToken,
 				user: {
 					id: req.user.id,
 					name: req.user.name,

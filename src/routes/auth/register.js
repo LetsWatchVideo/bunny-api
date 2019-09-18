@@ -39,14 +39,14 @@ module.exports = compose(
 				username,
 				password
 			);
-			const jwtToken = jwt.sign({
+			const accessToken = jwt.sign({
 				user
 			}, process.env.JWT_SECRET, {
 				algorithm: 'HS256'
 			});
 			return send(res, 200, {
 				statusCode: 200,
-				jwtToken,
+				accessToken,
 				user
 			});
 		}else{

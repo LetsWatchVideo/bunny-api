@@ -12,7 +12,7 @@ module.exports = compose(
 		const data = await json(req);
 		var user = await um.checkUser(data.username, data.password);
 		if(user){
-			var jwtToken = jwt.sign({
+			var accessToken = jwt.sign({
 				user
 			}, process.env.JWT_SECRET, {
 				algorithm: 'HS256'
@@ -20,7 +20,7 @@ module.exports = compose(
 
 			send(res, 200, {
 				statusCode: 200,
-				jwtToken,
+				accessToken,
 				user
 			});
 		}else{

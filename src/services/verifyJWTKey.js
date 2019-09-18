@@ -36,7 +36,7 @@ module.exports = fn => async (req, res) => {
 				});
 			}
 			req.user = {
-				token: token,
+				accessToken: token,
 				id: result.user_id,
 				name: result.username,
 				type: result.type,
