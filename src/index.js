@@ -84,6 +84,7 @@ module.exports = router(
 	post('/room/remote/give', middleware(require('./routes/room/remote/give'))),
 	post('/room/remote/take', middleware(require('./routes/room/remote/take'))),
 	post('/*', notfound),
+	get('/room/remote', middleware(require('./routes/room/remote/get'))),
 	get('/room', middleware(require('./routes/room/get'))),
 	get('/auth/me', middleware(require('./routes/auth/me'))),
 	get('/', middleware(require('./routes/index/get'))),

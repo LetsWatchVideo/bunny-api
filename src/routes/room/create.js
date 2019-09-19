@@ -8,6 +8,10 @@ import {
 
 import Docker from 'dockerode';
 
+import crypto from 'crypto';
+
+import roomModel from '../models/room';
+
 import verifyJWTKey from '../../services/verifyJWTKey';
 
 const MAX_ROOM_QUOTA = 1;
@@ -15,6 +19,7 @@ module.exports = compose(
 	verifyJWTKey
 )(
 	async (req, res) => {
+		const room = new roomModel;
 		const jsonData = await json(req);
 
 		// Verify that room name (jsonData.name) is set
@@ -42,6 +47,8 @@ module.exports = compose(
 			});
 		}
 
+		let roomToken = crypto.randomBytes(20).toString('hex');
+
 		var docker = new Docker({
 			socketPath: '/var/run/docker.sock'
 		});
@@ -49,6 +56,9 @@ module.exports = compose(
 		let container = await docker.run('bunny-vm', [], undefined, {
 			'name': `bunny-vm-${jsonData.name}`,
 			'Labels': {
+			},
+			'Environment': {
+				'roomToken': roomToken
 			},
 			'HostConfig': {
 				'PortBindings': {
@@ -64,7 +74,8 @@ module.exports = compose(
 		return send(res, 201, {
 			statusCode: 201,
 			data: {
-				name: jsonData.name
+				name: jsonData.name,
+				token: roomToken
 			}
 		});
 	}

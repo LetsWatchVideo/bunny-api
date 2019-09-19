@@ -22,9 +22,22 @@ CREATE TABLE `user_types` (
    PRIMARY KEY(`type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `rooms` (
+  `room_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `last_seen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`room_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 ALTER TABLE `users`
   ADD COLUMN `type` varchar(25) NOT NULL DEFAULT 'user',
   ADD CONSTRAINT `user_types_ibfk_1` FOREIGN KEY (`type`) REFERENCES `user_types` (`type`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `rooms`
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
