@@ -6,7 +6,7 @@ class Room {
 				'users.user_id': user_id
 			})
 			.debug(true)
-			.count('rooms.name')
+			.select('rooms.*', 'users.user_id', 'users.username')
             .innerJoin('users as u', 'rooms.user_id', 'u.user_id')
             .first()
 			.then(resolve)
@@ -14,6 +14,20 @@ class Room {
 		});
 	}
 	
+	getUserRoomCount(user_id) {
+		return new Promise((resolve, reject) => {
+			dbInstance('rooms').where({
+				'users.user_id': user_id
+			})
+			.debug(true)
+			.count('rooms.name')
+            .innerJoin('users as u', 'rooms.user_id', 'u.user_id')
+            .first()
+			.then(resolve)
+			.catch(reject);
+		});
+	}
+
 	isValidRemoteToken(token) {
 		return new Promise((resolve, reject) => {
 			dbInstance('rooms').where({

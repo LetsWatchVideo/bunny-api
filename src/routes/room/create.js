@@ -39,7 +39,7 @@ module.exports = compose(
 		}
 	
 		// Verify that user only has one active room
-		let userRoom = room.getUserRoom(req.user);
+		let userRoom = room.getUserRoomCount(req.user);
 		if(!req.user || (userRoom && userRoom.count >= MAX_ROOM_QUOTA)){
 			return send(res, 403, {
 				statusCode: 403,
