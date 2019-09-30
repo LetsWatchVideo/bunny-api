@@ -52,7 +52,7 @@ module.exports = compose(
 		}else{
 			return send(res, 400, {
 				statusCode: 400,
-				statusMessage: 'No registration data provided'
+				error: 'No registration data provided'
 			});
 		}
 	}

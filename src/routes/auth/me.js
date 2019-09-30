@@ -21,6 +21,7 @@ module.exports = compose(
 		}else{
 			send(res, 401, {
 				statusCode: 401,
+				error: 'Unauthorized',
 				token: null,
 				user: null
 			});
