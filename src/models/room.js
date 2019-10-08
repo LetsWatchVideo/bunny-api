@@ -63,4 +63,4 @@ class Room {
 		});
 	}
 }
-export default User;
+export default Room;

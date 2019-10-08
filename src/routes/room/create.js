@@ -10,7 +10,7 @@ import Docker from 'dockerode';
 
 import crypto from 'crypto';
 
-import roomModel from '../models/room';
+import roomModel from '../../models/room';
 
 import verifyJWTKey from '../../services/verifyJWTKey';
 
