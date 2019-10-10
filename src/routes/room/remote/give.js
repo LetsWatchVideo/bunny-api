@@ -1,7 +1,7 @@
 import { send, json } from 'micro';
 import { compose } from 'micro-hoofs';
 
-import verifyJWTKey from '../../services/verifyJWTKey';
+import verifyJWTKey from '../../../services/verifyJWTKey';
 
 module.exports = compose(
 	verifyJWTKey

@@ -2329,10 +2329,10 @@ micro-boom@^1.1.0:
   dependencies:
     boom "^4.2.0"
 
-micro-cors@1.0.0-alpha.1:
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/micro-cors/-/micro-cors-1.0.0-alpha.1.tgz#07925f32a27665d4534daf83ff7deced25b3b6f1"
-  integrity sha512-okKjSdA2B4uKpK1Wg3ex9u0JKA36wq750JPtt23rHvos23yVLvFMAglcQasOLXnBFVC+HPZzU2Ay3TODzYCBxw==
+micro-cors@1.0.0-alpha.2:
+  version "1.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/micro-cors/-/micro-cors-1.0.0-alpha.2.tgz#7f23839fcd1b2fd67948cdbdf43d18107dfd86eb"
+  integrity sha512-/LZALrmdjdDSMNb8lZXdfzBcFv3fDY3cGEACcSsCCLxFaYnh3nu2ePYdRKZp6PNSwXH6m5FpdohQQ+YdKgCkAQ==
 
 micro-dev@^3.0.0:
   version "3.0.0"

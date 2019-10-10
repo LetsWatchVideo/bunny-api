@@ -3,7 +3,7 @@ import { compose } from 'micro-hoofs';
 
 import verifyJWTKey from '../../services/verifyJWTKey';
 
-import roomModel from '../models/room';
+import roomModel from '../../models/room';
 
 module.exports = compose(
 	verifyJWTKey
