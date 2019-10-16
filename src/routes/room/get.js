@@ -9,22 +9,21 @@ module.exports = compose(
 	verifyJWTKey
 )(
 	async (req, res) => {
-		if(req.user){
+		let rm = new roomModel;
+		let room;
+
+		if(req.params && req.params.name){
+			room = rm.getRoom(req.params.name);
+		}else if(req.user){
 			// Get the users assigned room, if they have one
-			let rm = new roomModel;
-			let room = rm.getUserRoom(req.user.id);
-			return send(res, 401, {
-				statusCode: 401,
-				data: {
-					room,
-					user: req.user
-				}
-			});
-		}else{
-			return send(res, 401, {
-					statusCode: 401,
-					data: null
-			});
+			room = rm.getUserRoom(req.user.id);
 		}
+		return send(res, room ? 200 : 401, {
+			statusCode: room ? 200 : 401,
+			data: {
+				room,
+				user: req.user ? req.user : null
+			}
+		});
 	}
 );

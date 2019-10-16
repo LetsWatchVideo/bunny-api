@@ -27,7 +27,7 @@ nconf.defaults({
 
 global.nconf = nconf;
 global.dbInstance = initDb();
-
+console.log(global.nconf.get('database:connection:database'));
 function initDb(){
 	return require('knex')({
 		client: nconf.get('database:client'),
@@ -53,7 +53,7 @@ const corsMiddleware = microCors({
 	allowHeaders: [ 'Content-Type', 'Authorization', 'Accept', 'X-Requested-With', 'Origin'],
 	maxAge: 86400,
 	origin: '*',
-	runHandlerOnOptionsRequest: true
+	runHandlerOnPreflightRequest: true
 });
 
 const rateLimitMiddleware = ratelimit.bind(ratelimit, {
@@ -68,7 +68,7 @@ const rateLimitMiddleware = ratelimit.bind(ratelimit, {
 });
 
 const middleware = compose(...[
-	handleErrors,
+	//handleErrors,
 	corsMiddleware,
 	rateLimitMiddleware,
 ]);
@@ -86,6 +86,7 @@ module.exports = router(
 	post('/*', notfound),
 	get('/room/remote', middleware(require('./routes/room/remote/get'))),
 	get('/room', middleware(require('./routes/room/get'))),
+	get('/room/:name', middleware(require('./routes/room/get'))),
 	get('/auth/me', middleware(require('./routes/auth/me'))),
 	get('/', middleware(require('./routes/index/get'))),
 	get('/*', notfound),
