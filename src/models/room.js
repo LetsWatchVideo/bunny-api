@@ -28,13 +28,13 @@ class Room {
 		});
 	}
 
-	isValidRemoteToken(token) {
+	isValidRemotePassword(password) {
 		return new Promise((resolve, reject) => {
 			dbInstance('rooms').where({
-				'token': token
+				'password': password
 			})
 			.debug(true)
-			.count('rooms.token')
+			.count('rooms.password')
             .innerJoin('users as u', 'rooms.user_id', 'u.user_id')
 			.first()
 			.map((data) => {

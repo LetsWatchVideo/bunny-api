@@ -12,7 +12,7 @@ module.exports = compose(
 		const room = new roomModel;
         const jsonData = await json(req);
         
-        let isValid = jsonData.token ? room.isValidRemoteToken(jsonData.token) : false;
+        let isValid = jsonData.password ? room.isValidRemotePassword(jsonData.password) : false;
 
 		send(res, isValid ? 200 : 400, {
 			statusCode: isValid ? 200 : 400,

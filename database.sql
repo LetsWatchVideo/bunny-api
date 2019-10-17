@@ -25,7 +25,7 @@ CREATE TABLE `user_types` (
 CREATE TABLE `rooms` (
   `room_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `last_seen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
