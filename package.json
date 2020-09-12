@@ -41,7 +41,7 @@
     "microrouter": "^3.0.0",
     "mysql2": "^1.5.1",
     "nconf": "^0.10.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "urlencoded-body-parser": "^2.0.1"
   }
 }
