@@ -40,7 +40,7 @@
     "micro-ratelimit2": "https://github.com/GuacLive/ratelimit.git",
     "microrouter": "^3.0.0",
     "mysql2": "^1.5.1",
-    "nconf": "^0.10.0",
+    "nconf": "^0.11.4",
     "node-fetch": "^2.6.0",
     "urlencoded-body-parser": "^2.0.1"
   }
